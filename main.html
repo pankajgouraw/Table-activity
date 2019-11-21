@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ClassTeacher</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="css/animate.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script type="text/javascript" src="js/jquery.js"></script>
+      <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="js/enableDragMobile.js"></script>
+   </head>
+   <body >
+      <!-- <body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;"> -->
+      <div class="mainWrapper">
+         <div class="wrapper">
+         <div id="header">
+            <div class="logo logoWrapper">
+               <a href="main.html"> <img src="img/logo.png"> </a>
+               <h3 id="headerText"></h3>
+            </div>
+         </div>
+        </div>
+        <div id="innerWrapper" class="animated fadeIn">
+            <h2 id="instruction">Arrange the numbers in Ascending order</h2>
+            <div class="tableContainer ">
+              <div class="innerTablesize">
+              <div class="innerTableContainer animated slideInRight"> 
+              <!-- table -->
+              <!-- table end-->
+              </div>
+            </div>
+              <div class="operations">
+                <div class="dropContainer">
+                  <ul>
+                    <li><span class="drag">1</span></li>
+                    <li><span class="drag">2</span></li>
+                    <li><span class="drag">3</span></li>
+                    <li><span class="drag">4</span></li>
+                    <li><span class="drag">5</span></li>
+                    <li><span class="drag">6</span></li>
+                    <li><span class="drag">7</span></li>
+                    <li><span class="drag">8</span></li>
+                    <li><span class="drag">09</span></li>
+                    <li><span class="drag">100</span></li>
+                  </ul>
+                </div>
+                <div class="buttons">
+                 <button id='next'>Next</button>
+                 <button id='check'>Check</button>
+                 <button id='reset'>Reset</button>
+                 <button id='showAnswer'>Show Answer</button>
+                 <button id='playAgain'>Play Again</button>
+                 <button id="nextTable">Next Table <span></span> </button>
+               </div>
+              </div>
+
+          </div>
+         </div><!--innerwrapper end here -->
+        </div>  <!--wrapper end here -->
+      <script type="text/javascript" src="data/data.js"></script>
+      <script type="text/javascript" src="js/script.js"></script>
+   </body>
+</html>
+

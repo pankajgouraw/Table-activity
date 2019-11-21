@@ -1,0 +1,134 @@
+* {margin: 0px;padding: 0px;}
+body {
+	min-height: 100vh;
+    font-family: sans-serif;
+    caret-color:transparent;
+}
+
+.tableContainer{
+
+max-width: 500px;
+margin: auto;
+display: grid;
+grid-auto-flow: column;
+
+}
+.dropContainer ul{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+.dropContainer ul li span{
+	cursor:pointer;
+}
+
+.dropContainer ul li{
+	list-style: none;
+	float:left;
+	width:50%;
+	min-height: 25px;
+}
+.operations .dropContainer{
+width: 150px;
+}
+.innerTablesize{
+	width: 200px;
+	min-height: 300px;
+}
+.operations{
+
+}
+
+.tableContainer .innerTableContainer{
+	text-align:left;
+	
+}
+.tableContainer span{
+	font-size: 30px;
+    margin: 5px;
+}
+
+.tableContainer .firstNumber{}
+.tableContainer .multiplicationSign{}
+.tableContainer .secondNumber{}
+.tableContainer .equalSign{}
+.tableContainer .result{
+
+}
+
+.wrapper{max-width:960px;margin:0px auto;position: relative;}
+
+#header .logo h3 {
+flex-grow: 1;
+text-align: right;
+font-family: sans-serif;
+font-size: 28px;
+color: #fff;
+margin-top:0px;
+}
+#header .logo {margin: 0px auto;display: flex;align-items: center;}
+#header {padding: 15px 15px 0px 15px;}
+#innerWrapper{   padding: 15px; text-align: center; overflow: hidden; position: relative;}
+#innerWrapper h2{font-family: sans-serif;font-weight: bold;}
+
+#instruction{
+	margin-bottom:30px;
+}
+
+.buttons{
+	margin-top: 20px;
+	display: flex;
+	justify-content: normal;
+	flex-direction: column;
+	width: 150px;
+}
+
+.buttons button{
+	font-weight: bold;
+padding: 4px 15px;
+text-transform: uppercase;
+letter-spacing: 1px;
+margin: 2px;
+cursor: pointer;
+}
+
+.innerTableContainer div{
+	display: flex;
+}
+
+.buttons button span{
+	font-size: inherit;
+}
+
+#nextTable{display: none;}
+.innerTableContainer .drop{
+display: inline-block;
+height: 30px;
+width: 55px;
+border-bottom: 2px solid #000;
+}
+
+.mainWrapper{
+	width:100%;
+}
+
+#check{display: none;}
+#reset{display: none;}
+#showAnswer{display: none;}
+#playAgain{display: none;}
+
+@media screen and (max-width: 768px) {
+
+
+}
+
+
+@media screen and (max-width: 500px) {
+.logoWrapper img{width:100px;}
+#header .logo h3{font-size:20px;}
+#header{padding-bottom:0px; margin-bottom:0px;}
+.buttons button{font-size: 11px;}
+} 
+
+
+/*  // media quesry end here...*/
