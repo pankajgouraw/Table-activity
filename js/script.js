@@ -3,17 +3,18 @@ $(function() {
     let newurl='';
     $("#headerText").text(headerText);
     $("#instruction").css({color: headerInstructionColor});
+    $("#instruction").text(Instruction);
     $('body').css({'background-image': bg});
     let innerTableContainer = $('.innerTableContainer');
     dragDrop();
-
+    listOfTable();
 
     // url value
     let url = window.location.href;
     if (url.indexOf('?') > 0) {
         let params = new URLSearchParams(url.substring(1));
         tableFor = parseInt(params.get('tableFor'));
-        generateOptions();
+        // generateOptions();
         dragDrop();
         optionRandPosition();
         // console.log("url variable available....");
@@ -41,7 +42,7 @@ $(function() {
     }  // end generate table
 
 
-        //function to generateFirstQuestion
+    //function to generateFirstQuestion
     function generateQuestion(){
         let htmlData = '';
         let ans = '';
@@ -57,7 +58,9 @@ $(function() {
                                 <span class="multiplicationSign">x</span>
                                 <span class="secondNumber">${i}</span>
                                 <span class="equalSign">=</span>
-                                <span class="result drop" data-ans='${ans}' data-user=''></span>
+                                <span class="result">
+                                    <input class='drop' data-ans='${ans}' type='text'  data-user=''/>
+                                </span>
                             </div>`
                 }else{
                     html = `<div>
@@ -99,7 +102,9 @@ $(function() {
                                 <span class="multiplicationSign">x</span>
                                 <span class="secondNumber">${i}</span>
                                 <span class="equalSign">=</span>
-                                <span class="result drop" data-ans='${ans}' data-user=''></span>
+                                <span class="result">
+                                    <input class='drop' data-ans='${ans}' type='text'  data-user=''/>
+                                </span>
                             </div>`
                 }
                 qindex++;
@@ -107,6 +112,7 @@ $(function() {
                 htmlData +=html;
             }
         } // end question two
+        
 
         // question three
         if(questionIndex === 3){
@@ -118,10 +124,10 @@ $(function() {
                                 <span class="multiplicationSign">x</span>
                                 <span class="secondNumber">${i}</span>
                                 <span class="equalSign">=</span>
-                                <span class="result">${ans}</span>
+                                <span class="result">
+                                    <input class='drop' data-ans='${ans}' type='text'  data-user=''/>
+                                </span>
                             </div>`
-                
-
                 htmlData +=html;
             }
         } // end question three
@@ -140,9 +146,13 @@ $(function() {
         questionIndex++;
         console.log(questionIndex)
 
-        if(questionIndex === 2){
+        if(questionIndex === 3){
             $(this).hide();
-            $('#nextTable').show();
+            if(tableFor >= lastTable){
+                $('#nextTable').hide();
+            }else{
+                $('#nextTable').show();
+            }
             $('#nextTable span').text();
             $('#playAgain').show();   
         }
@@ -157,16 +167,16 @@ $(function() {
 
         setTimeout(function(){
            $('.innerTableContainer').addClass('zoomIn').show();
-           generateOptions()
+           //generateOptions()
            dragDrop();
            optionRandPosition();
-           if(questionIndex ===2){
+           if(questionIndex ===3){
             tableFor++;
-            console.log('table for', tableFor)
+
+            //console.log('table for', tableFor)
             let url2 = window.location.pathname;
             newurl = url2 + `?data=all&tableFor=${tableFor}`;
             $('#nextTable span').text(tableFor);
-
            }
         },1000)
 
@@ -192,19 +202,8 @@ $(function() {
             drop: function(event, ui) {
 
                 // if ($(event.target).attr('data-user') == '') {
-                     $(event.target).attr('data-user', ui.draggable.text())
+                $(event.target).attr('data-user', ui.draggable.text())
 
-                //     setTimeout(function() {
-                //         $(event.target).text(ui.draggable.text());
-                //     }, 1000)
-
-                // } else {
-                //     $(ui.draggable).animate({
-                //         top: "0px",
-                //         left: "0px"
-                //     });
-                //     return false;
-                // }
                 // centering element when drop
                 var drop_el = $(this).offset();
                 var drag_el = ui.draggable.offset();
@@ -222,18 +221,18 @@ $(function() {
     } //end here drag and drop 
 
     // generate options
-    function generateOptions(){
-        $('.dropContainer ul').css({'opacity':1});
-        let htmlData = '';
-            for(let i=1; i<= tabelTill; i++){
-                ans = tableFor * i;
+    // function generateOptions(){
+    //     $('.dropContainer ul').css({'opacity':1});
+    //     let htmlData = '';
+    //         for(let i=1; i<= tabelTill; i++){
+    //             ans = tableFor * i;
            
-                    html = `<li><span class="drag">${ans}</span></li>`;
+    //                 html = `<li><span class="drag">${ans}</span></li>`;
 
-                htmlData +=html;
-            }
-            $('.dropContainer ul').html(htmlData);
-    } 
+    //             htmlData +=html;
+    //         }
+    //         $('.dropContainer ul').html(htmlData);
+    // } 
     // end generate random position
 
     // arrange the options to the random position
@@ -252,32 +251,16 @@ $(function() {
   })
 
     $('#playAgain').click(function(){
-        location.reload();
+        window.location.href = 'main.html'
     })
 
 
         //reset question function
     $('#reset').click(function() {
         $('.drop').attr('data-user', '').css({
-            'backgroundColor': 'transparent'
+            'backgroundColor': '#f9f9f957'
         });
-        $('.drag').animate({
-            top: "0px",
-            left: "0px"
-        })
-
-        // $.each($('.drop'), function(index, value) {
-        //     let dataUser = $(value).attr('data-user');
-        //     let dataAns = $(value).attr('data-ans');
-        //     // console.log(dataUser, dataAns);
-        //     if (!dataUser == dataAns) {
-
-        //         $(value).animate({
-        //             top: "0px",
-        //             left: "0px"
-        //         })
-        //     }
-        // })
+        $('.drop').val('');
 
     })
     //reset question function end
@@ -302,4 +285,37 @@ $(function() {
     }) // check answer function  end
 
 
+    // get the user data
+    $('body').on('keyup', '.drop', function(e)
+    {
+        let inputValue = $(this).val();
+        $(this).attr('data-user',inputValue);
+    })
+    // get the user data end
+
+    //listOfTable
+    
+    function listOfTable(){
+        let htmlData = '';
+        for(let i=tableFor; i <= lastTable; i++){
+            let html = `<option value='${i}'>${i}</option>`;
+            htmlData += html;
+        }
+        // console.log('hello world');
+        $('#listOfTable').html(htmlData);
+    }
+    //listOfTable end
+
+    $('#listOfTable').change(function(){
+            let url2 = window.location.pathname;
+            let selectValue = $(this).val();
+            newurl = url2 + `?data=all&tableFor=${selectValue}`;
+            // $('#nextTable span').text(tableFor);
+             window.location.href = newurl;
+            // tableFor++;
+
+             $(this).val(tableFor);
+    })
+
+    $('#listOfTable').val(tableFor);
 }); // end document function 

@@ -2,7 +2,7 @@
 body {
 	min-height: 100vh;
     font-family: sans-serif;
-    caret-color:transparent;
+    /*caret-color:transparent;*/
 }
 
 .tableContainer{
@@ -16,7 +16,6 @@ grid-auto-flow: column;
 .dropContainer ul{
 	display: flex;
 	flex-wrap: wrap;
-
 }
 .dropContainer ul li span{
 	cursor:pointer;
@@ -32,29 +31,48 @@ grid-auto-flow: column;
 width: 150px;
 }
 .innerTablesize{
-	width: 200px;
+	width: 270px;
 	min-height: 300px;
 }
-.operations{
 
+.selectTable{
+	width: 500px;
+	margin: auto;
+	text-align: left;
+	margin-bottom:20px;
+}
+
+
+#listOfTable{
+	width: 100px;
+height: 30px;
+margin-left: 10px;
+font-size: 18px;
+text-align:center;
 }
 
 .tableContainer .innerTableContainer{
 	text-align:left;
-	
 }
+
 .tableContainer span{
 	font-size: 30px;
     margin: 5px;
+    width:40px;
 }
 
 .tableContainer .firstNumber{}
 .tableContainer .multiplicationSign{}
 .tableContainer .secondNumber{}
 .tableContainer .equalSign{}
-.tableContainer .result{
-
+.tableContainer .result input{
+font-size:30px;
+text-align: center;
+font-family: sans-serif;
+padding:5px;
 }
+
+.tableContainer .result{text-align: center; width:70px;}
 
 .wrapper{max-width:960px;margin:0px auto;position: relative;}
 
@@ -68,11 +86,11 @@ margin-top:0px;
 }
 #header .logo {margin: 0px auto;display: flex;align-items: center;}
 #header {padding: 15px 15px 0px 15px;}
-#innerWrapper{   padding: 15px; text-align: center; overflow: hidden; position: relative;}
+#innerWrapper{padding: 15px; text-align: center; overflow: hidden; position: relative;}
 #innerWrapper h2{font-family: sans-serif;font-weight: bold;}
 
 #instruction{
-	margin-bottom:30px;
+	/*margin-bottom:30px;*/
 }
 
 .buttons{
@@ -94,6 +112,7 @@ cursor: pointer;
 
 .innerTableContainer div{
 	display: flex;
+	    align-items: center;
 }
 
 .buttons button span{
@@ -106,6 +125,10 @@ display: inline-block;
 height: 30px;
 width: 55px;
 border-bottom: 2px solid #000;
+background-color:
+#f9f9f957;
+border: 1px solid
+#000;
 }
 
 .mainWrapper{
@@ -118,7 +141,34 @@ border-bottom: 2px solid #000;
 #playAgain{display: none;}
 
 @media screen and (max-width: 768px) {
+	.tableContainer span{
+		    font-size: 20px;
+		    margin: 3px;
+	    	width: 30px;
+	}
 
+		.innerTablesize {
+	    	width: 180px;
+		}
+		.tableContainer .result{
+			width:40px;
+		}
+
+		.buttons{
+			    width: 110px;
+	    padding: -left:5px;
+	    padding-left: 5px;
+		}
+
+			.innerTableContainer .drop{
+		    width: 30px;
+		    height: 15px;
+		    font-size:20px !important;
+		    
+		}
+		.tableContainer{
+			max-width: 355px;
+		}
 
 }
 
@@ -128,6 +178,34 @@ border-bottom: 2px solid #000;
 #header .logo h3{font-size:20px;}
 #header{padding-bottom:0px; margin-bottom:0px;}
 .buttons button{font-size: 11px;}
+
+.tableContainer span{
+	    font-size: 20px;
+	    margin: 3px;
+    	width: 30px;
+}
+
+	.innerTablesize {
+    	width: 180px;
+	}
+	.tableContainer .result{
+		width:40px;
+	}
+
+	.buttons{
+		    width: 110px;
+    padding: -left:5px;
+    padding-left: 5px;
+	}
+
+		.innerTableContainer .drop{
+	    width: 30px;
+	    height: 15px;
+	    font-size:20px !important;
+
+	}
+
+
 } 
 
 
