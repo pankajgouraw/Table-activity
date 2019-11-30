@@ -1,8 +1,15 @@
 * {margin: 0px;padding: 0px;}
+
+@font-face {
+  font-family: nickname;
+  src: url(../font/NicknameDEMO.otf);
+}
 body {
 	min-height: 100vh;
     font-family: sans-serif;
-    /*caret-color:transparent;*/
+    /*background-image: url('img/bodybg.png');*/
+    background-size: contain;
+    font-family: nickname;
 }
 
 .tableContainer{
@@ -27,6 +34,10 @@ grid-auto-flow: column;
 	width:50%;
 	min-height: 25px;
 }
+
+.operations{
+	margin-top:50px;
+}
 .operations .dropContainer{
 width: 150px;
 }
@@ -36,19 +47,36 @@ width: 150px;
 }
 
 .selectTable{
-	width: 500px;
-	margin: auto;
-	text-align: left;
-	margin-bottom:20px;
+width: 200px;
+margin: auto;
+    margin-bottom: auto;
+text-align: left;
+margin-bottom: 20px;
+background-image: url('../img/yellowbg.png');
+height: 103px;
+background-size: contain;
+text-align:center;
 }
 
-
+#listOfTable option{font-size: 23px; font-family: nickname; }
 #listOfTable{
-	width: 100px;
-height: 30px;
+width: 70px;
+height: 31px;
 margin-left: 10px;
-font-size: 18px;
-text-align:center;
+font-size: 23px;
+-webkit-appearance: none;
+-moz-appearance: none;
+text-indent: 1px;
+text-overflow: '';
+background-image: url(../img/selectbg.png);
+background-size: contain;
+background-repeat: no-repeat;
+border: none;
+font-family: nickname;
+margin-top: 55px;
+border: 1px solid
+#06000061;
+    padding-left: 7px;
 }
 
 .tableContainer .innerTableContainer{
@@ -56,7 +84,7 @@ text-align:center;
 }
 
 .tableContainer span{
-	font-size: 30px;
+	font-size: 25px;
     margin: 5px;
     width:40px;
 }
@@ -65,12 +93,7 @@ text-align:center;
 .tableContainer .multiplicationSign{}
 .tableContainer .secondNumber{}
 .tableContainer .equalSign{}
-.tableContainer .result input{
-font-size:30px;
-text-align: center;
-font-family: sans-serif;
-padding:5px;
-}
+
 
 .tableContainer .result{text-align: center; width:70px;}
 
@@ -78,16 +101,16 @@ padding:5px;
 
 #header .logo h3 {
 flex-grow: 1;
-text-align: right;
-font-family: sans-serif;
+text-align: center;
+
 font-size: 28px;
 color: #fff;
 margin-top:0px;
 }
 #header .logo {margin: 0px auto;display: flex;align-items: center;}
-#header {padding: 15px 15px 0px 15px;}
+#header {padding: 15px 15px 15px 15px;}
 #innerWrapper{padding: 15px; text-align: center; overflow: hidden; position: relative;}
-#innerWrapper h2{font-family: sans-serif;font-weight: bold;}
+#innerWrapper h2{font-weight: bold;}
 
 #instruction{
 	/*margin-bottom:30px;*/
@@ -99,15 +122,20 @@ margin-top:0px;
 	justify-content: normal;
 	flex-direction: column;
 	width: 150px;
+	margin-left: 30px;
 }
 
 .buttons button{
-	font-weight: bold;
-padding: 4px 15px;
-text-transform: uppercase;
-letter-spacing: 1px;
-margin: 2px;
+font-weight: bold;
+padding: 1px 5px;
 cursor: pointer;
+background-size: 100% 100%;
+font-family: nickname;
+font-size:18px;
+border: 2px solid #3F51B5;
+    background-image: radial-gradient(#fffefe, #009688);
+        border-radius: 13px;
+    margin-bottom: 10px;
 }
 
 .innerTableContainer div{
@@ -119,16 +147,28 @@ cursor: pointer;
 	font-size: inherit;
 }
 
+/*#next{
+background-image: url('../img/nextbg.png');
+}
+#check{background-image: url('../img/checkbg.png');}
+#reset{background-image: url('../img/reset.png');}
+#showAnswer{}
+#playAgain{}
+#nextTable{}*/
+
 #nextTable{display: none;}
 .innerTableContainer .drop{
-display: inline-block;
-height: 30px;
-width: 55px;
-border-bottom: 2px solid #000;
-background-color:
-#f9f9f957;
-border: 1px solid
-#000;
+    display: inline-block;
+    height: 26px;
+    width: 55px;
+    border-bottom: 2px solid #000;
+    border: none;
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;
+    font-family: nickname;
+    background-image: url(../img/inputbg.png);
+    background-size: 100% 100%;
 }
 
 .mainWrapper{
@@ -139,6 +179,36 @@ border: 1px solid
 #reset{display: none;}
 #showAnswer{display: none;}
 #playAgain{display: none;}
+
+.wellDone{
+	    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.errors{
+	    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.wellDone h3{
+	    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 2px 2px 3px #000;
+    color: #fff;
+    font-style: oblique;
+}
+.errors h3{
+	    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 2px 2px 3px #000;
+    color: #fff;
+    font-style: oblique;
+}
 
 @media screen and (max-width: 768px) {
 	.tableContainer span{
@@ -155,7 +225,7 @@ border: 1px solid
 		}
 
 		.buttons{
-			    width: 110px;
+			    width: 150px;
 	    padding: -left:5px;
 	    padding-left: 5px;
 		}
@@ -174,10 +244,28 @@ border: 1px solid
 
 
 @media screen and (max-width: 500px) {
+	.selectTable{
+		    width: 115px;
+    margin: 0;
+    height: 60px;
+	}
+	#listOfTable{
+		    width: 56px;
+    height: 25px;
+    margin-left: 10px;
+    font-size: 18px;    margin-top: 29px;
+	}
+	.operations{
+		text-align:left;
+		margin-top:20px;
+	}
+	body{
+		background-size: cover;
+	}
 .logoWrapper img{width:100px;}
 #header .logo h3{font-size:20px;}
 #header{padding-bottom:0px; margin-bottom:0px;}
-.buttons button{font-size: 11px;}
+.buttons button{font-size: 11px; }
 
 .tableContainer span{
 	    font-size: 20px;
@@ -194,8 +282,8 @@ border: 1px solid
 
 	.buttons{
 		    width: 110px;
-    padding: -left:5px;
-    padding-left: 5px;
+    padding: left:5px;
+    padding-left: 5px;    margin-top: 29px; margin-left:0px;
 	}
 
 		.innerTableContainer .drop{

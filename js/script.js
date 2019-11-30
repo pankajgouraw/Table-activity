@@ -4,7 +4,7 @@ $(function() {
     $("#headerText").text(headerText);
     $("#instruction").css({color: headerInstructionColor});
     $("#instruction").text(Instruction);
-    $('body').css({'background-image': bg});
+    $('body').css({'background-image': 'url('+bg+')'});
     let innerTableContainer = $('.innerTableContainer');
     dragDrop();
     listOfTable();
@@ -266,7 +266,10 @@ $(function() {
     //reset question function end
 
     // check answer function  
+    let correctAns = '';
     $('#check').click(function() {
+        let dropLength = $('.drop').length;
+        console.log('dropLength', dropLength)
         $.each($('.drop'), function(index, value) {
             let dataUser = $(value).attr('data-user');
             let dataAns = $(value).attr('data-ans');
@@ -275,13 +278,36 @@ $(function() {
                 $(value).css({
                     'backgroundColor': 'green'
                 })
+                correctAns++;
+
             } else {
-                console.log('incorrect');
+                
                 $(value).css({
                     'backgroundColor': 'red'
                 })
             }
         })
+
+        if(correctAns == dropLength){
+            //console.log('all are correct ans..')
+            $('.wellDone').fadeIn();
+            let audio = new Audio('audio/welldone.mp3');
+            audio.play();
+            setTimeout(function(){
+              $('.wellDone').fadeOut();  
+          },2000)
+        }else{
+           $('.errors').fadeIn();
+            let audio = new Audio('audio/tryAgain.mp3');
+            audio.play();
+            setTimeout(function(){
+              $('.errors').fadeOut();  
+          },2000)
+            
+        }
+
+        correctAns = 0;
+
     }) // check answer function  end
 
 
