@@ -1,7 +1,7 @@
 $(function() {
     let questionIndex = 0;
     let newurl='';
-    $("#headerText").text(headerText);
+    $("#headerText span").text(headerText);
     $("#instruction").css({color: headerInstructionColor});
     $("#instruction").text(Instruction);
     $('body').css({'background-image': 'url('+bg+')'});
